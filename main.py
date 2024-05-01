@@ -1,7 +1,11 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
+from PIL import Image
 
+image = Image.open('19368.jpg')
+
+st.image(image, width=300)
 st.title("Vendor Management Portal")
 st.markdown("Enter the details of the new vendor below")
 
@@ -10,7 +14,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 existing_data = conn.read(worksheet="Vendor", usecols=list(range(6)), ttl=5)
 existing_data = existing_data.dropna(how="all")
 
-st.dataframe(existing_data)
+#st.dataframe(existing_data)
 
 BUSINESS_TYPES = [
     "Manufacturer",
